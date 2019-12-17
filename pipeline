@@ -43,7 +43,8 @@ pipeline {
                 }
                 sleep 2
             }
-     stage("build-stage-container"){
+        }
+        stage("build-stage-container"){
             steps {
                 sshagent (credentials: ['e91user']) {
                     echo "Removing Existing staging Container"
