@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sshagent (credentials: ['e91user']) {
                     echo "Testing Dev Container"
-                    sh "ssh -o StrictHostKeyChecking=no root@root@3.83.236.235 'curl localhost:2018 ' "
+                    sh "ssh -o StrictHostKeyChecking=no root@3.83.236.235 'curl localhost:2018 ' "
                 }
                 sleep 2
             }
