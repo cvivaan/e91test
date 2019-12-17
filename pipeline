@@ -44,11 +44,11 @@ pipeline {
                 sleep 2
             }
         }
-        stage("build-stage-container"){
+        stage("build-stage-environment"){
             steps {
                 sshagent (credentials: ['e91user']) {
                     echo "Removing Existing staging Container"
-                    sh "ssh -o StrictHostKeyChecking=no root@52.206.2.238 ' docker stop dev || true && docker rm dev || true ' "
+                    sh "ssh -o StrictHostKeyChecking=no root@52.206.2.238 ' docker stop stage || true && docker rm stage || true ' "
                     echo "Building New Container"
                     sh "ssh -o StrictHostKeyChecking=no root@52.206.2.238 'cd /home/e91user/e91test && docker build -t centosapache:${env.BUILD_ID} .'"
                     echo "Starting New Container"
